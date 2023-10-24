@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors_in_immutables
 
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:mission_1/booking.dart';
 
 class MissionPage extends StatefulWidget {
   MissionPage({super.key});
@@ -17,14 +19,12 @@ class _MissionPageState extends State<MissionPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
-        
         title: Text(
           "Mission 1",
           style: TextStyle(
             color: Colors.white,
             fontSize: 24,
             fontWeight: FontWeight.w400,
-
           ),
           textAlign: TextAlign.left,
         ),
@@ -157,12 +157,14 @@ Terlepas dari tujuan perjalanan Anda, Hotel OYO Surabaya Barat adalah tempat yan
                       ],
                     ),
                   ),
+
                 ],
               ),
             ),
           ),
+          
           Positioned(
-            bottom: 12,
+            top: 12,
             right: 12,
             child: FloatingActionButton(
               onPressed: () {
@@ -177,7 +179,39 @@ Terlepas dari tujuan perjalanan Anda, Hotel OYO Surabaya Barat adalah tempat yan
                 color: buttonColor ? Colors.white : Colors.black,
               ),
             ),
-          )
+          ),
+
+
+
+          Positioned(
+            left: 0,
+            right: 0,
+            bottom: 12,
+            child: Align(
+                  alignment: Alignment(0.00, 0.00),
+                  child: ElevatedButton.icon(
+                    onPressed: () {
+                      Fluttertoast.showToast(
+                          msg: 'Welcome to Booking page!',
+                          backgroundColor: Colors.green);
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return BookingPage();
+                      }));
+                    },
+                    icon: Icon(Icons.check_box),
+                    label: Text("Book Now"),
+                    style: ElevatedButton.styleFrom(
+                        elevation: 2,
+                        padding: EdgeInsets.fromLTRB(24, 20, 24, 20),
+                        backgroundColor: Colors.blue[700],
+                        foregroundColor: Colors.white,
+                        textStyle: TextStyle(
+                          color: Colors.white,
+                        )),
+                  ),
+                ),
+          ),
         ],
       ),
     );
