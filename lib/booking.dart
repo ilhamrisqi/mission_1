@@ -20,7 +20,7 @@ class _BookingPageState extends State<BookingPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Booking Page Hotel OYO Surabaya Barat"),
+        title: Text("Booking Hotel OYO Surabaya Barat"),
         centerTitle: true,
       ),
       body: Container(
@@ -81,6 +81,9 @@ class _BookingPageState extends State<BookingPage> {
                   if (phoneNumber.length < 8 || phoneNumber.length > 13) {
                     return 'Nomor telepon harus antara 8 dan 13 digit';
                   }
+                  else if (!RegExp(r'^[0-9]+$').hasMatch(value)) {
+                          return 'Nomor Telepon hanya boleh mengandung angka';
+                        }
                   return null;
                 },
               ),
@@ -131,7 +134,7 @@ class _BookingPageState extends State<BookingPage> {
                     );
                   }
                 },
-                icon: Icon(Icons.check_box),
+                icon: Icon(Icons.hotel),
                 label: Text("Booking Now"),
                 style: ElevatedButton.styleFrom(
                   elevation: 2,
